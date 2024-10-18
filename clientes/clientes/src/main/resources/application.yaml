@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: clientes
+  zipkin:
+    base-url: http://localhost:9411
+management:
+  tracing:
+    sampling:
+      probability: 1
+server:
+    port: 8062
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      hostname: localhost
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      prefer-ip-address: true
